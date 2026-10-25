@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>سلو كوفي شوب | المنصورة</title>
+<meta name="description" content="سلو كوفي شوب في المنصورة — احجز كوبك عليه اسمك واستمتع بقهوتك على مهلك.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1c130e;--card:#f5ebdd;--ink:#2b1a10;--brown:#6b3e22;--gold:#d9a35b;--soft:#e7d6bf}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Tajawal',sans-serif;background:radial-gradient(circle at 30% 10%,#3a2416,var(--bg) 70%);color:var(--ink);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.flyer{width:100%;max-width:420px;background:var(--card);border-radius:28px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.7);animation:up .7s ease both}
+@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1}}
+.hero{position:relative;height:260px;background:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=900&q=80') center/cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,var(--card) 2%,transparent 60%)}
+.badge{position:absolute;top:16px;right:16px;z-index:1;background:var(--gold);color:var(--ink);font-weight:800;padding:6px 14px;border-radius:99px;font-size:14px}
+.body{padding:0 26px 28px;text-align:center;margin-top:-30px;position:relative;z-index:1}
+h1{font-family:'Lalezar',cursive;font-size:46px;color:var(--brown);line-height:1.1}
+.tag{color:#7a5a43;margin-top:6px}
+.city{display:inline-flex;gap:6px;align-items:center;margin-top:14px;background:var(--soft);padding:8px 16px;border-radius:99px;font-weight:700}
+.offer{margin:22px 0;border:2px dashed var(--brown);border-radius:20px;padding:18px;background:#fff8ee}
+.offer small{color:var(--brown);font-weight:800;letter-spacing:1px}
+.offer h2{font-size:24px;margin:6px 0}
+.offer p{color:#6d5444;font-size:15px}
+.btn{display:block;width:100%;border:0;cursor:pointer;font:800 18px 'Tajawal';padding:16px;border-radius:16px;background:var(--brown);color:#fff;transition:.2s}
+.btn:hover{background:var(--ink);transform:translateY(-2px)}
+.foot{margin-top:16px;font-size:13px;color:#8a6d58}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--gold);color:var(--ink);padding:12px 20px;border-radius:12px;font-weight:700;transition:.3s}
+.toast.show{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<main class="flyer">
+  <div class="hero"><span class="badge">عرض خاص ☕</span></div>
+  <div class="body">
+    <h1>سلو كوفي شوب</h1>
+    <p class="tag">اقعد، اتكلم، اقرأ، واشرب قهوتك على مهلك</p>
+    <div class="city">📍 المنصورة</div>
+    <div class="offer">
+      <small>العرض</small>
+      <h2>احجز كوبك عليه اسمك</h2>
+      <p>اكتب اسمك، احجز كوبك، وهيكون مستنيك في الفرع مكتوب عليه اسمك.</p>
+    </div>
+    <button class="btn" id="cta">احجز كوبك الآن</button>
+    <p class="foot">بنحب الروقان 🐢</p>
+  </div>
+</main>
+<div class="toast" id="toast">جاري فتح واتساب...</div>
+<script>
+// غيّر هذا الرقم لرقم واتساب الخاص بك (بالصيغة الدولية بدون +)
+var PHONE = "201000000000";
+document.getElementById('cta').addEventListener('click', function(){
+  var name = prompt('اكتب اسمك اللي هيتكتب على الكوب:');
+  if(!name) return;
+  var t=document.getElementById('toast');t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show')},2500);
+  var msg = 'مرحبًا سلو كوفي شوب، عايز أحجز كوب باسم: ' + name;
+  window.open('https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg), '_blank');
+});
+</script>
+</body>
+</html>
